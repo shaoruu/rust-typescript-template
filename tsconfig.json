@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "dist",
+    "lib": ["es2016", "dom", "es6"],
+    "strict": false,
+    "baseUrl": "."
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.rs"]
+}

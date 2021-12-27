@@ -1,0 +1,21 @@
+{
+  "name": "@rust-typescript-lib/main",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/iantheearl/rust-typescript-lib.git",
+  "author": "Ian Huang <21ianh1@students.tas.tw>",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn run build:rs:prod && yarn run build:ts",
+    "build:ts": "tsc",
+    "build:rs:prod": "wasm-pack build --scope rust-typescript-lib",
+    "build:rs:node": "wasm-pack build --scope rust-typescript-lib --target nodejs"
+  },
+  "dependencies": {
+    "core": "file:./pkg"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
