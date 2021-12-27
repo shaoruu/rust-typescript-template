@@ -1,1 +1,1 @@
-# rust-typescript-lib
+# rust-typescript-template
