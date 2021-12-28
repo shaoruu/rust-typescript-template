@@ -1,6 +1,6 @@
 {
   "name": "@rust-typescript-template/main",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "repository": "https://github.com/iantheearl/rust-typescript-template.git",
   "author": "Ian Huang <21ianh1@students.tas.tw>",
