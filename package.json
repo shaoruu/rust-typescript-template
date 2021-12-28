@@ -12,7 +12,7 @@
     "build:rs:node": "wasm-pack build --scope rust-typescript-template --target nodejs"
   },
   "dependencies": {
-    "core": "file:./pkg"
+    "@rust-typescript-template/core": "file:./pkg"
   },
   "devDependencies": {
     "ts-node": "^10.4.0",

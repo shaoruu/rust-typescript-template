@@ -1,4 +1,4 @@
-import core, { greet } from 'core';
+import core, { greet } from '@rust-typescript-template/core';
 
 export class Foo {
   private wasm: typeof core | undefined;
@@ -6,7 +6,7 @@ export class Foo {
   /** Compiles and stores a reference to the library's wasm module. */
   public async initialize(): Promise<void> {
     // Load wasm asynchronously
-    this.wasm = await import('../node_modules/core');
+    this.wasm = await import('../node_modules/@rust-typescript-template/core');
   }
 
   /** Helper function that verifies wasm has been initialized. */
