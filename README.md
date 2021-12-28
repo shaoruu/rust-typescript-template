@@ -10,6 +10,6 @@ np
 
 # publish main
 cd pkg
-np
+np --no-test
 
 ```
