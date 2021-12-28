@@ -5,6 +5,9 @@
   "repository": "https://github.com/iantheearl/rust-typescript-template.git",
   "author": "Ian Huang <21ianh1@students.tas.tw>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "yarn run build:rs:prod && yarn run build:ts",
     "build:ts": "tsc",
