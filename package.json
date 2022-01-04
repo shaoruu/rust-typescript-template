@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
+    "prepare": "husky install",
     "predev": "wasm-pack build --out-name index --target web",
     "dev": "npm-run-all --parallel \"dev:rs\" \"dev:ts\"",
     "dev:ts": "npm run build -- -w",
@@ -48,11 +49,6 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "{src,example}/**/*.{js,jsx,ts,tsx}": [
