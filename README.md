@@ -32,4 +32,7 @@ npm publish --access public
 
 ```bash
 # build the example
+yarn deploy
+
+# configure github to deploy branch gh-pages 
 ```
