@@ -3,7 +3,8 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "import", "unused-imports"],
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
   },
   "extends": [
     "eslint:recommended",
@@ -32,6 +33,8 @@
       }
     ],
     "unused-imports/no-unused-imports-ts": "error",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "prefer-const": "error",
+    "prefer-template": "error"
   }
 }

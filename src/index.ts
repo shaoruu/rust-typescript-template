@@ -8,7 +8,7 @@ export class Foo {
     this.ready = true;
   }
 
-  public doSomething() {
-    console.log("1 + 2 in WASM is:", add(1, 2));
+  public add(a: number, b: number) {
+    return add(a, b);
   }
 }

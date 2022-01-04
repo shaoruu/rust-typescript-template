@@ -3,4 +3,4 @@ dist
 target
 pkg
 wasm-pack.log
-example/dist
+example/build
