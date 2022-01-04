@@ -10,4 +10,5 @@ module.exports = {
   },
   mode: process.env.NODE_ENV || "development",
   plugins: [new CopyWebpackPlugin({ patterns: ["index.html"] })],
+  stats: "errors-only",
 };
