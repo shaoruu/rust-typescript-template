@@ -1,4 +1,4 @@
-import { Foo } from '../dist';
+import { Foo } from "../dist";
 
 (async () => {
   const test = new Foo();

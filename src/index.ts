@@ -1,4 +1,4 @@
-import init, { add } from '../pkg';
+import init, { add } from "../pkg";
 
 export class Foo {
   ready = false;
@@ -9,6 +9,6 @@ export class Foo {
   }
 
   public doSomething() {
-    console.log('1 + 2 in WASM is:', add(1, 2));
+    console.log("1 + 2 in WASM is:", add(1, 2));
   }
 }
