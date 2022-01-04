@@ -1,5 +1,6 @@
-pkg
+node_modules
 dist
 target
-
-node_modules
+pkg
+wasm-pack.log
+example/dist

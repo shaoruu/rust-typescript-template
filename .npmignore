@@ -3,3 +3,7 @@ src/**.*
 **/*.rs
 tsconfig.json
 yarn.lock
+pkg
+target
+node_modules
+core
