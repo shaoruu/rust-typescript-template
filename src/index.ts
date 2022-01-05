@@ -1,14 +1,15 @@
-import init, { add } from "../pkg";
+import * as wasm from "../pkg/index_bg.wasm";
+
+import { init } from "./wasm";
 
 export class Foo {
-  ready = false;
+  wasm!: typeof wasm;
 
   public async initialize(): Promise<void> {
-    await init();
-    this.ready = true;
+    this.wasm = (await init()) as any;
   }
 
   public add(a: number, b: number) {
-    return add(a, b);
+    return this.wasm.add(a, b);
   }
 }

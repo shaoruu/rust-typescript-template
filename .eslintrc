@@ -32,8 +32,9 @@
         "pathGroupsExcludedImportTypes": ["builtin"]
       }
     ],
-    "unused-imports/no-unused-imports-ts": "error",
+    // "unused-imports/no-unused-imports-ts": "warn",
     "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "prefer-const": "error",
     "prefer-template": "error"
   }

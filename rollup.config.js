@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import wasm from "@rollup/plugin-wasm";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import { base64 } from "rollup-plugin-base64";
+import dts from "rollup-plugin-dts";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
 
@@ -14,39 +14,61 @@ const globals = {
   ...packageJson.devDependencies,
 };
 
-export default {
-  input: "src/index.ts",
-  output: {
-    file: packageJson.module,
-    format: "esm", // ES Modules
-    sourcemap: true,
-  },
-  plugins: [
-    wasm({
-      sync: [path.resolve(__dirname, "pkg", "index_bg.wasm")],
-      maxFileSize: Infinity,
-    }),
-    peerDepsExternal(),
-    resolve(),
-    commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
-    commonjs({
-      exclude: "node_modules",
-      ignoreGlobal: true,
-    }),
-    {
-      writeBundle() {
-        fs.copyFile(
-          path.resolve(__dirname, "pkg", "index_bg.wasm"),
-          path.resolve(__dirname, "dist", "index_bg.wasm"),
-          (err) => {
-            if (err) throw err;
-          }
-        );
-      },
+export default [
+  {
+    input: "src/index.ts",
+    output: {
+      file: packageJson.module,
+      format: "esm",
     },
-    ...(!process.env.ROLLUP_WATCH ? [terser()] : []),
-  ],
-  external: Object.keys(globals),
-  watch: { clearScreen: false },
-};
+    plugins: [
+      typescript(),
+      nodePolyfills(),
+      resolve({
+        browser: true,
+        preferBuiltins: false,
+      }),
+      // used to load in .wasm files as base64 strings, then can be instantiated with
+      // helper functions within `src/wasm.ts`.
+      base64({ include: "**/*.wasm" }),
+      {
+        // copy over rust-built declaration files to dist for later .d.ts bundling
+        name: "copy-pkg",
+        generateBundle() {
+          fs.mkdirSync(path.resolve(`dist/pkg`), { recursive: true });
+
+          ["index.d.ts", "index_bg.wasm.d.ts"].forEach((file) => {
+            fs.copyFileSync(
+              path.resolve(`./pkg/${file}`),
+              path.resolve(`./dist/pkg/${file}`)
+            );
+          });
+        },
+      },
+      ...(!process.env.ROLLUP_WATCH ? [terser()] : []),
+    ],
+    external: [...Object.keys(globals)],
+    watch: { clearScreen: false },
+  },
+  {
+    input: "./dist/src/index.d.ts",
+    output: [
+      {
+        file: "dist/index.d.ts",
+        format: "es",
+      },
+    ],
+    plugins: [
+      dts(),
+      {
+        // remove unused .d.ts files
+        name: "remove-unused-declarations",
+        generateBundle() {
+          ["dist/pkg", "dist/src"].forEach((folder) => {
+            fs.rmSync(path.resolve(folder), { recursive: true, force: true });
+          });
+        },
+      },
+    ],
+  },
+];
