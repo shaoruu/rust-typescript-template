@@ -1,11 +1,18 @@
-import { Foo } from "../dist";
+import { GameOfLife } from "../dist";
 
 (async () => {
-  const test = new Foo();
-  await test.initialize();
+  const game = new GameOfLife();
+  await game.initialize();
 
-  const result = test.add(1, 3);
-  document.getElementById(
-    "content"
-  ).textContent = `1 + 3 in WASM = ${result} !`;
+  const button = document.getElementById("start");
+
+  button.addEventListener("click", () => {
+    if (game.paused) {
+      button.textContent = "pause";
+      game.resume();
+    } else {
+      button.textContent = "start";
+      game.pause();
+    }
+  });
 })();

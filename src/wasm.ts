@@ -1,3 +1,4 @@
+import initWasm from "../pkg";
 import wasm from "../pkg/index_bg.wasm";
 
 function asciiToBinary(str: string) {
@@ -18,7 +19,6 @@ function decode(encoded: string) {
 }
 
 export async function init() {
-  // @ts-ignore
-  const program = await WebAssembly.instantiate(decode(wasm));
-  return program.instance.exports;
+  const program = await initWasm(decode(wasm as any));
+  return program;
 }
