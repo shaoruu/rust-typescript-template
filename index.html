@@ -26,6 +26,13 @@
         height: 100vh;
         overflow: hidden;
       }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
     </style>
   </head>
   <body>
@@ -34,7 +41,10 @@
       javascript in your browser.</noscript
     >
 
-    <div id="content" />
+    <main>
+      <canvas id="game-canvas"></canvas>
+      <button id="start">start</button>
+    </main>
 
     <script src="./index.js" type="module"></script>
   </body>
