@@ -1,6 +1,10 @@
 ![](https://i.imgur.com/lzXkRrw.jpg)
 
-<center>Create Rust + TypeScript libraries with ease! PR'S WELCOMED!</center>
+<p style="text-align: center">Create Rust + TypeScript libraries with ease! PR'S WELCOMED!</p>
+
+## :sparkles: Inspiration
+
+I wanted to create a WebAssembly/Rust library with additional JS features, but I couldn't find any resources on how to integrate the npm-ready library built by `wasm-pack` with TypeScript. All the examples online either seemed to use the output of `wasm-pack` using `npm link`, or didn't have TypeScript support. So, I created this, a template that allows you to embed `wasm-pack` all within one single TypeScript-based library. Enjoy!
 
 ## :building_construction: Install
 
