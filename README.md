@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/lzXkRrw.jpg)
 
-<center>Create Rust + TypeScript libraries with ease!</center>
+<center>Create Rust + TypeScript libraries with ease! PR'S WELCOMED!</center>
 
 ## :building_construction: Install
 
