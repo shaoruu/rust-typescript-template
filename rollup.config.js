@@ -55,25 +55,3 @@ export default {
   external: [...Object.keys(globals)],
   watch: { clearScreen: false },
 };
-//   {
-//     input: "./dist/src/index.d.ts",
-//     output: [
-//       {
-//         file: "dist/index.d.ts",
-//         format: "es",
-//       },
-//     ],
-//     plugins: [
-//       dts(),
-//       {
-//         // remove unused .d.ts files
-//         name: "remove-unused-declarations",
-//         generateBundle() {
-//           ["dist/pkg", "dist/src"].forEach((folder) => {
-//             fs.rmSync(path.resolve(folder), { recursive: true, force: true });
-//           });
-//         },
-//       },
-//     ],
-//   },
-// ];
