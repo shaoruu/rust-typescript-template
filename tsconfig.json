@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "rootDir": ".",
     "strict": true,
-    "target": "es5",
+    "target": "es2018",
     "types": ["node"]
   },
   "include": ["src/**/*"],
